@@ -23,10 +23,11 @@ def berechne_gesamtpreis_mit_rabatt(bestellung):
 
 def steuern_hinzufuegen(bestellung: list) -> list:
     for b in bestellung:
-        if b[0].startswith(('a', 'k')):
-            b[2] *= 1.1
+        print(b[0])
+        if b[0].lower().startswith(tuple("abcdefghijk")):
+            b[2] = round(b[2]*1.1,2)
         else:
-            b[2] *= 1.2
+            b[2] = round(b[2]*1.2,2)
 
     return bestellung
 
