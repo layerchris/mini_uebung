@@ -1,4 +1,4 @@
-bestellung = [["Duschgel", 10, 4], ["Rasierschaum", 2, 3]]
+bestellung = [["Duschgel", 10, 4], ["Rasierschaum", 2, 3], ["Zahnpasta", 2, 3], ["Turnschuhe", 1, 50] ,["Cola", 15, 1], ["Bier", 20, 1.2]]
 
 def berechne_gesamtpreis_mit_rabatt(bestellung):
     gesamtpreis = 0
@@ -21,9 +21,14 @@ def berechne_gesamtpreis_mit_rabatt(bestellung):
     return gesamtpreis
 
 
-berechne_gesamtpreis_mit_rabatt(bestellung)
+def steuern_hinzufuegen(bestellung: list) -> list:
+    for b in bestellung:
+        if b[0].startswith(('a', 'k')):
+            b[2] *= 1.1
+        else:
+            b[2] *= 1.2
 
-
+    return bestellung
 
 
 def berechne_bestellungssumme(artikel_liste):
@@ -47,3 +52,10 @@ def berechne_bestellungssumme(artikel_liste):
         gesamtbetrag += artikel_summe
 
     return gesamtbetrag
+
+
+steuern_hinzufuegen(bestellung)
+#berechne_gesamtpreis_mit_rabatt(bestellung)
+#berechne_bestellungssumme(bestellung)
+
+print(bestellung)
